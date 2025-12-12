@@ -1,119 +1,120 @@
-# 🧮 Modern Calculator  
-A sleek, responsive, and theme-adaptive calculator built with a focus on clean UI, accessibility, and delightful user experience.
+<h1 align="center">📱 Scientific Dual-Theme Calculator</h1>
 
-## ✨ Features at a Glance
-- 🌗 **Dual Theme Engine**  
-  Switch effortlessly between **Day Mode** and **Night Mode** with a single click.
+<p align="center">
+  <img src="https://img.shields.io/badge/Theme-Day%20%7C%20Night-blueviolet?style=for-the-badge">
+  <img src="https://img.shields.io/badge/UI-Glassy%20%7C%20Simple-00b894?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Made%20With-HTML%20%7C%20CSS%20%7C%20JavaScript-f39c12?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Responsive-Yes-2ecc71?style=for-the-badge">
+</p>
 
-- 🎨 **Automatic Theme Detection**  
-  The calculator intelligently adapts to your system's light/dark preference — no manual setup required.
-
-- 🧊 **Glassy UI Mode**  
-  A modern frosted-glass aesthetic inspired by contemporary design systems.
-
-- 📘 **Simple UI Mode**  
-  A minimal, distraction-free interface for users who prefer classic calculator visuals.
-
-- ⚡ **Fully Responsive**  
-  Works smoothly across desktop, tablet, and mobile devices.
-
-- 🔢 **Standard Calculator Functions**  
-  Clean handling of basic arithmetic operations with reliable performance.
+<p align="center">  
+A sleek, high-performance calculator with **Day/Night Mode**, **Automatic Theme Detection**, and **two premium UI styles** — <br>  
+<b>Glassy Mode</b> for futuristic vibes and <b>Simple Mode</b> for classic elegance.
+</p>
 
 ---
 
-## 🖼️ Visual Preview  
-> *(Add screenshots or a GIF demo of your calculator here)*  
-You may include:
-- Glassy theme screenshot  
-- Simple theme screenshot  
-- Day mode  
-- Night mode  
+## 🌟 Features
 
-Example:
+### 🎭 **Dual Theme Experience**
+- 🌞 **Day Mode** for bright environments  
+- 🌙 **Night Mode** for low-light comfort  
+- 🖥️ **Auto Theme Detection** — adapts instantly to your system settings
 
- 
+### 🧊 **Two UI Styles**
+- **Glassy Mode:** Modern frosted-glass design  
+- **Simple Mode:** Clean, traditional layout
+
+### ⚡ Core Highlights
+- 🔢 Standard calculator functionality  
+- 📱 Fully responsive design for mobile & desktop  
+- 🚀 Smooth animations  
+- 🎯 Intuitive button layout  
+- 🧩 Lightweight & fast — no frameworks needed  
+
+---
+
+## 🖼️ Screenshots  
+> *(Replace these with actual screenshots from your project)*
+
+<p align="center">
+  <img src="./images/glassy-light.png" width="45%" alt="Glassy Light Theme">
+  <img src="./images/glassy-dark.png" width="45%" alt="Glassy Dark Theme"><br><br>
+  <img src="./images/simple-light.png" width="45%" alt="Simple Light Theme">
+  <img src="./images/simple-dark.png" width="45%" alt="Simple Dark Theme">
+</p>
 
 ---
 
 ## 🚀 Live Demo  
-> *(If you host it on GitHub Pages, Netlify, Vercel, etc., add link here)*  
-Example:  
-**Live Preview:** https://your-username.github.io/Calculator/
+Deploy your calculator on GitHub Pages or Netlify for a live preview:
+
+http://Sayan124.github.io/Calculator
 
 ---
 
-## 🛠️ Tech Stack
-- **HTML5**
-- **CSS3** (Glassmorphism + Classic UI)
-- **JavaScript**
-- Responsive design principles
+## 🛠️ Tech Stack  
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=html,css,js,git,github&theme=light">
+</p>
+
+- **HTML5**  
+- **CSS3** (Glassy Design, Custom Themes)  
+- **JavaScript**  
+- Git & GitHub  
 
 ---
 
-## 📦 Installation & Usage
+## 📦 Installation
 
-1. **Clone the repository**
 ```bash
 git clone https://github.com/Sayan124/Calculator.git
-
-2. Open the project
-
-
-
 cd Calculator
 
-3. Run locally
-Just open index.html in any browser — no build tools required.
-
-
+```
+Open index.html in your browser.
 
 
 ---
 
 🧠 Design Philosophy
 
-This project blends modern UI trends with old-school calculator familiarity.
-The dual-theme engine reflects a "best of both worlds" mindset:
+A blend of modern UI innovation and nostalgic simplicity.
+This calculator is crafted to:
 
-Glassy: futuristic, soft, translucent
+Respect traditional design language
 
-Simple: traditional, sharp, grounded
+Embrace futuristic glass aesthetics
+
+Deliver a frictionless user journey
+
+Adjust to your environment dynamically
 
 
-A calculator that respects the past while embracing tomorrow. 🚀
+A nod to the past, a step into tomorrow. ✨
 
 
 ---
 
 🤝 Contributing
 
-Pull requests are welcome.
-For major changes, please open an issue first to discuss what you'd like to update.
+PRs are welcome.
+For major features, open an issue first to discuss ideas.
 
 
 ---
 
-📄 License
+📜 License
 
-This project is licensed under the MIT License.
+MIT License © 2025
 
-
----
-
-⭐ Support the Project
-
-If this project helped you or impressed you, consider giving it a star ⭐ on GitHub.
-It helps visibility and fuels future enhancements!
 
 ---
 
-# 🚄 Want even more?
-I can also create:
+⭐ Support
 
-✅ A logo for your project  
-✅ A dynamic GIF hero animation  
-✅ Badges (tech stack badges, version badges, UI theme badges)  
-✅ A much more advanced README with a table of contents, contributor cards, shields.io badges, etc.
+If you like this project, don’t forget to star the repository — your support fuels future upgrades!
 
-Just say: **"Add badges"** or **"Make the README ultra-premium"** and I’ll upgrade it.
+<p align="center">
+  <img src="https://img.shields.io/github/stars/Sayan124/Calculator?style=social">
+</p>
