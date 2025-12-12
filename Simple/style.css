@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+    /* --- SIMPLE LIGHT THEME --- */
+    --bg-body: #f3f4f6;          /* Light Grey Background */
+    --bg-calc: #ffffff;          /* White Calculator */
+    --shadow-calc: 0 10px 25px rgba(0,0,0,0.1);
+    
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+    
+    /* Button Colors */
+    --btn-num-bg: #f9fafb;
+    --btn-num-text: #1f2937;
+    --btn-hover: #e5e7eb;
+    
+    --btn-func-bg: #e5e7eb;      /* Light Grey for AC, Del */
+    --btn-func-text: #111827;
+    
+    --btn-op-bg: #dbeafe;        /* Light Blue for Operators */
+    --btn-op-text: #2563eb;
+    
+    --btn-sci-bg: #f3f4f6;       /* Scientific Keys */
+    --btn-sci-text: #4b5563;
+    
+    --btn-eq-bg: #2563eb;        /* Solid Blue Equal */
+    --btn-eq-text: #ffffff;
+}
+
+[data-theme="dark"] {
+    /* --- SIMPLE DARK THEME --- */
+    --bg-body: #111827;          /* Very Dark Blue/Grey */
+    --bg-calc: #1f2937;          /* Dark Grey Calculator */
+    --shadow-calc: 0 10px 30px rgba(0,0,0,0.5);
+    
+    --text-primary: #f9fafb;
+    --text-secondary: #9ca3af;
+    
+    /* Button Colors */
+    --btn-num-bg: #374151;
+    --btn-num-text: #e5e7eb;
+    --btn-hover: #4b5563;
+    
+    --btn-func-bg: #4b5563;
+    --btn-func-text: #ffffff;
+    
+    --btn-op-bg: #3b82f6;        /* Blue Operators */
+    --btn-op-text: #ffffff;
+    
+    --btn-sci-bg: #374151;
+    --btn-sci-text: #d1d5db;
+    
+    --btn-eq-bg: #60a5fa;        /* Light Blue Equal */
+    --btn-eq-text: #111827;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif; /* Changed to Inter for cleaner look */
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-body);
+    transition: background 0.3s ease;
+}
+
+/* Main Container */
+.calculator-container {
+    position: relative;
+    width: 100%;
+    max-width: 360px; 
+    background: var(--bg-calc);
+    border-radius: 24px;
+    box-shadow: var(--shadow-calc);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    height: auto;
+    max-height: 95vh;
+}
+
+/* Theme Switcher */
+.theme-switch-container {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    z-index: 10;
+}
+
+.theme-switch-input { display: none; }
+
+.theme-switch-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 54px;
+    height: 28px;
+    background: var(--btn-func-bg);
+    border-radius: 50px;
+    position: relative;
+    padding: 0 6px;
+    cursor: pointer;
+}
+
+.theme-switch-label i { font-size: 12px; color: var(--text-secondary); z-index: 1; }
+
+.ball {
+    position: absolute;
+    top: 3px; left: 3px;
+    width: 22px; height: 22px;
+    background: var(--bg-calc);
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.theme-switch-input:checked + .theme-switch-label .ball { transform: translateX(26px); }
+
+/* Display */
+.display-screen {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+}
+
+.history { min-height: 24px; font-size: 1rem; color: var(--text-secondary); margin-bottom: 5px; }
+
+.expression {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 3rem;
+    color: var(--text-primary);
+    text-align: right;
+    font-weight: 600;
+}
+
+/* KEYPAD - GRID SYSTEM */
+.keypad {
+    display: grid;
+    gap: 12px;
+    flex-grow: 1;
+}
+
+/* Button Styling */
+.btn {
+    height: 60px;
+    border: none;
+    border-radius: 16px; /* Slightly squarer for simple look */
+    background: var(--btn-num-bg);
+    color: var(--btn-num-text);
+    font-size: 1.25rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn:hover { background: var(--btn-hover); }
+.btn:active { transform: scale(0.98); }
+
+/* Color Classes */
+.btn.func { background: var(--btn-func-bg); color: var(--btn-func-text); font-weight: 600; }
+.btn.op { background: var(--btn-op-bg); color: var(--btn-op-text); font-weight: 600; }
+.btn.equal { background: var(--btn-eq-bg); color: var(--btn-eq-text); }
+.btn.sci { background: var(--btn-sci-bg); color: var(--btn-sci-text); font-size: 1rem; }
+
+.btn.sci.active {
+    background: var(--btn-eq-bg);
+    color: var(--btn-eq-text);
+}
+
+/* Grid Mappings */
+.area-rad { grid-area: rad; }
+.area-deg { grid-area: deg; }
+.area-fact { grid-area: fact; }
+.area-lpar { grid-area: lpar; }
+.area-rpar { grid-area: rpar; }
+.area-per  { grid-area: per; }
+.area-ac   { grid-area: ac; }
+.area-del  { grid-area: del; }
+.area-inv  { grid-area: inv; }
+.area-sin  { grid-area: sin; }
+.area-ln   { grid-area: ln; }
+.area-7    { grid-area: seven; }
+.area-8    { grid-area: eight; }
+.area-9    { grid-area: nine; }
+.area-div  { grid-area: div; }
+.area-pi   { grid-area: pi; }
+.area-cos  { grid-area: cos; }
+.area-log  { grid-area: log; }
+.area-4    { grid-area: four; }
+.area-5    { grid-area: five; }
+.area-6    { grid-area: six; }
+.area-mul  { grid-area: mul; }
+.area-e    { grid-area: e; }
+.area-tan  { grid-area: tan; }
+.area-sqrt { grid-area: sqrt; }
+.area-1    { grid-area: one; }
+.area-2    { grid-area: two; }
+.area-3    { grid-area: three; }
+.area-sub  { grid-area: sub; }
+.area-ans  { grid-area: ans; }
+.area-exp  { grid-area: exp; }
+.area-pow  { grid-area: pow; }
+.area-0    { grid-area: zero; }
+.area-dot  { grid-area: dot; }
+.area-eq   { grid-area: eq; }
+.area-add  { grid-area: add; }
+
+/* === MOBILE LAYOUT (Portrait) === */
+.keypad {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        "ac del per div"
+        "seven eight nine mul"
+        "four five six sub"
+        "one two three add"
+        "zero zero dot eq";
+}
+
+.btn.sci { display: none; }
+.area-eq { grid-area: eq; } 
+.area-0 { grid-column: span 2; }
+
+/* === DESKTOP / LANDSCAPE LAYOUT === */
+@media (min-width: 768px) {
+    .calculator-container {
+        max-width: 900px;
+        padding: 32px;
+    }
+
+    .keypad {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 16px;
+        grid-template-areas:
+            "rad deg fact lpar rpar del ac"
+            "inv sin ln seven eight nine div"
+            "pi cos log four five six mul"
+            "e tan sqrt one two three sub"
+            "per exp pow zero dot eq add";
+    }
+
+    .btn.sci { display: flex; }
+    .area-del { display: flex; }
+    .area-ans { display: none; }
+    .area-0 { grid-column: auto; }
+
+    .btn {
+        height: 56px;
+        border-radius: 12px;
+        font-size: 1.1rem;
+    }
+}
+
+/* === MOBILE LANDSCAPE FIX === */
+@media (max-height: 500px) and (orientation: landscape) {
+    body { padding: 10px; }
+    .calculator-container {
+        flex-direction: row; 
+        max-width: 100%;
+        height: 100%;
+        max-height: 100vh;
+        padding: 16px;
+        gap: 24px;
+    }
+    
+    .theme-switch-container { top: 16px; left: 16px; }
+    .display-screen { margin-top: 10px; width: 30%; justify-content: center; }
+    .expression { font-size: 2rem; }
+
+    .keypad {
+        width: 70%;
+        gap: 10px;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-areas:
+            "rad deg fact lpar rpar del ac"
+            "inv sin ln seven eight nine div"
+            "pi cos log four five six mul"
+            "e tan sqrt one two three sub"
+            "per exp pow zero dot eq add";
+    }
+    
+    .btn.sci { display: flex; }
+    .area-ans { display: none; }
+    .area-0 { grid-column: auto; }
+
+    .btn {
+        height: 40px; 
+        font-size: 0.9rem;
+        border-radius: 8px;
+    }
+}

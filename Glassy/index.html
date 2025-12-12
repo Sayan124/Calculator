@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="icon" type="image/x-icon" href="calculator.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#8ec5fc">
+<link rel="apple-touch-icon" href="calculator.png">
+</head>
+<body>
+
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="calculator-container">
+        
+        <div class="theme-switch-container">
+            <input type="checkbox" id="theme-switch" class="theme-switch-input">
+            <label for="theme-switch" class="theme-switch-label">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+                <span class="ball"></span>
+            </label>
+        </div>
+
+        <div class="display-screen">
+            <div class="history" id="history"></div>
+            <input type="text" class="expression" id="display" value="0" readonly>
+        </div>
+
+        <div class="keypad">
+            <!-- Scientific Keys -->
+            <button class="btn sci area-rad" id="btn-rad" onclick="setAngleMode('RAD')">Rad</button>
+            <button class="btn sci area-deg" id="btn-deg" onclick="setAngleMode('DEG')">Deg</button>
+            <button class="btn sci area-fact" onclick="append('!')">x!</button>
+            <button class="btn sci area-lpar" onclick="append('(')">(</button>
+            <button class="btn sci area-rpar" onclick="append(')')">)</button>
+            
+            <button class="btn sci area-inv" id="btn-inv" onclick="toggleInverse()">Inv</button>
+            <button class="btn sci area-sin" id="btn-sin" onclick="appendTrig('sin')">sin</button>
+            <button class="btn sci area-ln" onclick="append('ln(')">ln</button>
+            
+            <button class="btn sci area-pi" onclick="append('π')">π</button>
+            <button class="btn sci area-cos" id="btn-cos" onclick="appendTrig('cos')">cos</button>
+            <button class="btn sci area-log" onclick="append('log(')">log</button>
+            
+            <button class="btn sci area-e" onclick="append('e')">e</button>
+            <button class="btn sci area-tan" id="btn-tan" onclick="appendTrig('tan')">tan</button>
+            <button class="btn sci area-sqrt" onclick="append('sqrt(')">√</button>
+            
+            <button class="btn sci area-ans" onclick="appendAns()">Ans</button> <!-- Hidden via CSS -->
+            <button class="btn sci area-exp" onclick="append('E')">EXP</button>
+            <button class="btn sci area-pow" onclick="append('^')">xʸ</button>
+
+            <!-- Standard Keys -->
+            <button class="btn func area-ac" onclick="clearAll()">AC</button>
+            <button class="btn func area-del" onclick="deleteLast()"><i class="fas fa-backspace"></i></button>
+            <button class="btn op area-per" onclick="append('%')">%</button>
+            <button class="btn op area-div" onclick="append('/')">÷</button>
+
+            <button class="btn num area-7" onclick="append('7')">7</button>
+            <button class="btn num area-8" onclick="append('8')">8</button>
+            <button class="btn num area-9" onclick="append('9')">9</button>
+            <button class="btn op area-mul" onclick="append('*')">×</button>
+
+            <button class="btn num area-4" onclick="append('4')">4</button>
+            <button class="btn num area-5" onclick="append('5')">5</button>
+            <button class="btn num area-6" onclick="append('6')">6</button>
+            <button class="btn op area-sub" onclick="append('-')">−</button>
+
+            <button class="btn num area-1" onclick="append('1')">1</button>
+            <button class="btn num area-2" onclick="append('2')">2</button>
+            <button class="btn num area-3" onclick="append('3')">3</button>
+            <button class="btn op area-add" onclick="append('+')">+</button>
+
+            <button class="btn num area-0" onclick="append('0')">0</button>
+            <button class="btn num area-dot" onclick="append('.')">.</button>
+            <button class="btn equal area-eq" onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js')
+      .then(() => console.log('App is ready to install!'));
+  }
+</script>
+</body>
+</html>

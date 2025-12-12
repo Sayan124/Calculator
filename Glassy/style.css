@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    /* Light Theme Variables */
+    --bg-gradient: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    
+    --text-primary: #2d3436;
+    --text-secondary: #636e72;
+    
+    --btn-bg: rgba(255, 255, 255, 0.25);
+    --btn-hover: rgba(255, 255, 255, 0.4);
+    --btn-active: rgba(255, 255, 255, 0.2);
+    
+    --btn-func: rgba(255, 107, 107, 0.2);
+    --btn-func-text: #d63031;
+    --btn-op: rgba(9, 132, 227, 0.2);
+    --btn-op-text: #0984e3;
+    --btn-eq: #0984e3;
+    --btn-eq-text: #ffffff;
+}
+
+[data-theme="dark"] {
+    /* Dark Theme Variables */
+    --bg-gradient: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    --glass-bg: rgba(0, 0, 0, 0.2);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    
+    --text-primary: #dfe6e9;
+    --text-secondary: #b2bec3;
+    
+    --btn-bg: rgba(255, 255, 255, 0.05);
+    --btn-hover: rgba(255, 255, 255, 0.1);
+    --btn-active: rgba(255, 255, 255, 0.02);
+    
+    --btn-func: rgba(255, 118, 117, 0.15);
+    --btn-func-text: #ff7675;
+    --btn-op: rgba(116, 185, 255, 0.15);
+    --btn-op-text: #74b9ff;
+    --btn-eq: #6c5ce7; 
+    --btn-eq-text: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-gradient);
+    transition: background 0.5s ease;
+    overflow: hidden;
+}
+
+/* Background Blobs */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: -1;
+}
+.blob-1 { top: -5%; left: -5%; width: 400px; height: 400px; background: #ff9ff3; opacity: 0.5; }
+.blob-2 { bottom: -5%; right: -5%; width: 350px; height: 350px; background: #54a0ff; opacity: 0.5; }
+
+/* Main Container */
+.calculator-container {
+    position: relative;
+    width: 100%;
+    max-width: 360px; 
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: var(--glass-shadow);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    height: auto;
+    max-height: 95vh;
+}
+
+/* Theme Switcher */
+.theme-switch-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+.theme-switch-input { display: none; }
+
+.theme-switch-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50px;
+    height: 26px;
+    background: var(--btn-bg);
+    border-radius: 50px;
+    position: relative;
+    padding: 0 5px;
+    cursor: pointer;
+    border: 1px solid var(--glass-border);
+}
+
+.theme-switch-label i { font-size: 12px; color: var(--text-primary); z-index: 1; }
+
+.ball {
+    position: absolute;
+    top: 2px; left: 2px;
+    width: 20px; height: 20px;
+    background: var(--btn-eq);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.theme-switch-input:checked + .theme-switch-label .ball { transform: translateX(24px); }
+
+/* Display */
+.display-screen {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.history { min-height: 20px; font-size: 0.9rem; color: var(--text-secondary); }
+
+.expression {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 3rem;
+    color: var(--text-primary);
+    text-align: right;
+    font-weight: 500;
+}
+
+/* KEYPAD - GRID SYSTEM */
+.keypad {
+    display: grid;
+    gap: 12px;
+    flex-grow: 1;
+}
+
+/* Button Styling */
+.btn {
+    height: 60px;
+    border: none;
+    border-radius: 16px;
+    background: var(--btn-bg);
+    color: var(--text-primary);
+    font-size: 1.7rem;
+    cursor: pointer;
+    transition: 0.2s;
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--glass-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn:hover { background: var(--btn-hover); }
+.btn:active { background: var(--btn-active); transform: scale(0.95); }
+
+/* Color Classes */
+.btn.func { background: var(--btn-func); color: var(--btn-func-text); }
+.btn.op { background: var(--btn-op); color: var(--btn-op-text); }
+.btn.equal { background: var(--btn-eq); color: var(--btn-eq-text); }
+
+/* Specific Button Area Mappings */
+.area-rad { grid-area: rad; }
+.area-deg { grid-area: deg; }
+.area-fact { grid-area: fact; }
+.area-lpar { grid-area: lpar; }
+.area-rpar { grid-area: rpar; }
+.area-per  { grid-area: per; }
+.area-ac   { grid-area: ac; }
+.area-del  { grid-area: del; }
+.area-inv  { grid-area: inv; }
+.area-sin  { grid-area: sin; }
+.area-ln   { grid-area: ln; }
+.area-7    { grid-area: seven; }
+.area-8    { grid-area: eight; }
+.area-9    { grid-area: nine; }
+.area-div  { grid-area: div; }
+.area-pi   { grid-area: pi; }
+.area-cos  { grid-area: cos; }
+.area-log  { grid-area: log; }
+.area-4    { grid-area: four; }
+.area-5    { grid-area: five; }
+.area-6    { grid-area: six; }
+.area-mul  { grid-area: mul; }
+.area-e    { grid-area: e; }
+.area-tan  { grid-area: tan; }
+.area-sqrt { grid-area: sqrt; }
+.area-1    { grid-area: one; }
+.area-2    { grid-area: two; }
+.area-3    { grid-area: three; }
+.area-sub  { grid-area: sub; }
+.area-ans  { grid-area: ans; }
+.area-exp  { grid-area: exp; }
+.area-pow  { grid-area: pow; }
+.area-0    { grid-area: zero; }
+.area-dot  { grid-area: dot; }
+.area-eq   { grid-area: eq; }
+.area-add  { grid-area: add; }
+
+/* === MOBILE LAYOUT (Portrait) === */
+.keypad {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        "ac del per div"
+        "seven eight nine mul"
+        "four five six sub"
+        "one two three add"
+        "zero zero dot eq";
+}
+
+.btn.sci { display: none; }
+.area-eq { grid-area: eq; } 
+.area-0 { grid-column: span 2; }
+
+/* === DESKTOP / LANDSCAPE LAYOUT === */
+@media (min-width: 768px) {
+    .calculator-container {
+        max-width: 900px;
+        padding: 30px;
+    }
+
+    .keypad {
+        grid-template-columns: repeat(7, 1fr);
+        /* Replaced 'ans' with 'per' */
+        /* Replaced 'per' with 'del' */
+        grid-template-areas:
+            "rad deg fact lpar rpar del ac"
+            "inv sin ln seven eight nine div"
+            "pi cos log four five six mul"
+            "e tan sqrt one two three sub"
+            "per exp pow zero dot eq add";
+    }
+
+    .btn.sci { display: flex; font-size: 1rem; }
+    
+    /* Show DEL button in Desktop mode now */
+    .area-del { display: flex; }
+    /* Hide ANS button via grid exclusion */
+    .area-ans { display: none; }
+
+    .area-0 { grid-column: auto; }
+
+    .btn {
+        height: 50px;
+        border-radius: 12px;
+        font-size: 1rem;
+    }
+
+    .area-ac { background: var(--btn-func); }
+    
+    .btn.sci.active {
+        background: var(--btn-hover);
+        border-color: var(--text-primary);
+    }
+}
+
+/* === MOBILE LANDSCAPE FIX === */
+/* Targeting devices with short height (like phones in landscape) */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding: 10px;
+    }
+
+    .calculator-container {
+        flex-direction: row; /* Side by side layout if super wide, or compact column */
+        max-width: 100%;
+        height: 100%;
+        max-height: 100vh;
+        padding: 10px 20px;
+        gap: 20px;
+    }
+    
+    .theme-switch-container {
+        top: 10px;
+        left: 10px;
+    }
+
+    .display-screen {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        width: 30%; /* Screen on left */
+        justify-content: center;
+    }
+    
+    .expression {
+        font-size: 2rem;
+    }
+
+    .keypad {
+        width: 70%; /* Keypad on right */
+        gap: 8px;
+        grid-template-columns: repeat(7, 1fr); /* Keep Scientific layout */
+        grid-template-areas:
+            "rad deg fact lpar rpar del ac"
+            "inv sin ln seven eight nine div"
+            "pi cos log four five six mul"
+            "e tan sqrt one two three sub"
+            "per exp pow zero dot eq add";
+    }
+    
+    .btn.sci { display: flex; }
+    .area-ans { display: none; }
+    .area-0 { grid-column: auto; }
+
+    .btn {
+        height: 35px; /* Much smaller buttons */
+        font-size: 1.3rem;
+        border-radius: 8px;
+    }
+}
