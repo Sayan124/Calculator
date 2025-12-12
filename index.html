@@ -10,29 +10,10 @@
     .box{max-width:720px;text-align:center;padding:24px;border-radius:12px}
     a{color:#7dd3fc}
   </style>
-  <script>
-    // Auto-detect preferred color scheme and redirect to the proper theme folder
-    (function(){
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      // Modify these folder names if yours are different
-      const darkTarget = '/Calculator/Glassy/';
-      const lightTarget = '/Calculator/Simple/';
-      const target = prefersDark ? darkTarget : lightTarget;
-      // If user explicitly chooses via URL param ?theme=Glassy or ?theme=Simple, respect that
-      const params = new URLSearchParams(location.search);
-      if (params.get('theme') === 'Glassy' || params.get('theme') === 'Simple') {
-        location.href = '/' + (params.get('theme')) + '/';
-      } else {
-        // Wait 200ms so reader sees the page briefly; then redirect
-        setTimeout(()=> location.href = target, 200);
-      }
-    })();
-  </script>
 </head>
 <body>
   <div class="box">
     <h1>Redirecting to your Calculator…</h1>
-    <p>If you are not redirected automatically, choose a theme:</p>
     <p>
       <a href="/Calculator/Glassy/">Open Glassy Theme</a> ·
       <a href="/Calculator/Simple/">Open Simple Theme</a>
