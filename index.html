@@ -15,8 +15,8 @@
     (function(){
       const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       // Modify these folder names if yours are different
-      const darkTarget = '/Glassy/';
-      const lightTarget = '/Simple/';
+      const darkTarget = '/Calculator/Glassy/';
+      const lightTarget = '/Calculator/Simple/';
       const target = prefersDark ? darkTarget : lightTarget;
       // If user explicitly chooses via URL param ?theme=Glassy or ?theme=Simple, respect that
       const params = new URLSearchParams(location.search);
@@ -34,8 +34,8 @@
     <h1>Redirecting to your Calculator…</h1>
     <p>If you are not redirected automatically, choose a theme:</p>
     <p>
-      <a href="/Glassy/">Open Glassy Theme</a> ·
-      <a href="/Simple/">Open Simple Theme</a>
+      <a href="/Calculator/Glassy/">Open Glassy Theme</a> ·
+      <a href="/Calculator/Simple/">Open Simple Theme</a>
     </p>
     <p style="font-size:90%;opacity:.8">You can force a theme by adding <code>?theme=glassy</code> or <code>?theme=simple</code> to the URL.</p>
   </div>
