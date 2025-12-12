@@ -35,19 +35,16 @@ A sleek, high-performance calculator with **Day/Night Mode**, **Automatic Theme 
 ---
 
 ## 🖼️ Screenshots  
-> *(Replace these with actual screenshots from your project)*
-
 <p align="center">
-  <img src="./images/glassy-light.png" width="45%" alt="Glassy Light Theme">
-  <img src="./images/glassy-dark.png" width="45%" alt="Glassy Dark Theme"><br><br>
-  <img src="./images/simple-light.png" width="45%" alt="Simple Light Theme">
-  <img src="./images/simple-dark.png" width="45%" alt="Simple Dark Theme">
+  <img src="./images/glassy-light.jpg" width="45%" alt="Glassy Light Theme">
+  <img src="./images/glassy-dark.jpg" width="45%" alt="Glassy Dark Theme"><br><br>
+  <img src="./images/simple-light.jpg" width="45%" alt="Simple Light Theme">
+  <img src="./images/simple-dark.jpg" width="45%" alt="Simple Dark Theme">
 </p>
 
 ---
 
 ## 🚀 Live Demo  
-Deploy your calculator on GitHub Pages or Netlify for a live preview:
 
 http://Sayan124.github.io/Calculator
 
